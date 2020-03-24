@@ -20,6 +20,8 @@ const members = [
   }
 ];
 
+
+
 function App() {
   const [member, setMember] = useState(members);
   const [formValues, setFormValues] = useState({
@@ -51,16 +53,23 @@ function App() {
       lname: "",
       email: "",
       role: ""
-    })
+    });
   };
+
+  const memberToEdit = event => {
+    console.log("Edit!")
+  }
 
   return (
     <div className="App">
       <h3>List of members:</h3>
       {member.map(person => (
-        <p>
-          {person.fname} {person.lname}, {person.email}, {person.role}
-        </p>
+        <div>
+          <p>
+            {person.fname} {person.lname}, {person.email}, {person.role}
+            <button onClick={memberToEdit}>edit</button>
+          </p>
+        </div>
       ))}
       <Form
         onFormSubmit={onFormSubmit}
